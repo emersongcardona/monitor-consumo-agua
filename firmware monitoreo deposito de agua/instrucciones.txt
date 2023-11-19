@@ -1,0 +1,73 @@
+programas necesarios:
+git - gitbash
+https://git-scm.com/download/win
+
+configurar cuenta git 
+git config --global user.name "YourName"
+git config --global user.email "TestEmail@mail.com"
+
+ejemplo: https://adamtheautomator.com/git-bash/#:~:text=Launch%20Git%20Bash%20console%20by,and%20click%20on%20Git%20Bash.&text=from%20Start%20Button-,2.,how%20Git%20looks%20and%20operates.
+
+
+node-red
+https://nodered.org/docs/getting-started/local
+
+instalar: sudo npm install -g --unsafe-perm node-red
+levantar servidor local: node-red
+ver servidor: http://127.0.0.1:1880
+apagar servidor: en terminal ctrl + c
+
+instalar terminal en el gitbash como administrador
+libreria node-red
+node-red-dashboard 
+node-red-contrib-kore-whatsappbot url: https://flows.nodered.org/node/node-red-contrib-kore-whatsappbot
+
+si el servidor estaba activo durante la instalacion, desactivarlo y reactivarlo para que aparezca la libreria ya instalada
+
+
+MQTT: 
+herramienta de visualizacion 
+MQTT X
+https://mqttx.app/
+
+
+mosquito broker
+https://mosquitto.org/download/
+
+openssl
+https://www.openssl.org/source/
+https://slproweb.com/products/Win32OpenSSL.html
+
+
+
+
+
+Arduino 
+IDE 2.0.3
+https://www.arduino.cc/en/software
+
+
+drivers para programar esp32
+https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads
+
+
+librerias
+lectura y gestion de archivos 
+FS.h
+SPI.h
+SPIFFS.h
+ArduinoJson by Benoit
+
+//comunicacion wifi
+wifi.h
+wificlient.h
+wifiManager.h by tzapu
+
+//comunicacion MQTT
+PubSubClient.h by Nick O`leary
+
+
+
+contraseña del access point que levanta el dispositivo
+nombre: IoT_device_1
+contraseña: iotDevice
