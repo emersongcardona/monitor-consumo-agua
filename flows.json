@@ -1,0 +1,768 @@
+[
+    {
+        "id": "f6efe6db2169526f",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e26ca7d78b59616e",
+        "type": "mqtt in",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "topic": "luis-device-1/test",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "da9c164b6ae5dfcb",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 440,
+        "y": 300,
+        "wires": [
+            [
+                "233395e91dd61243"
+            ]
+        ]
+    },
+    {
+        "id": "2a73aa04dbeacf10",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "function 1",
+        "func": "msg.payload = {\n    \"mensaje\": \"get\"\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 400,
+        "wires": [
+            [
+                "b738bcf6.c9fa3"
+            ]
+        ]
+    },
+    {
+        "id": "233395e91dd61243",
+        "type": "debug",
+        "z": "f6efe6db2169526f",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "78b2e05220ee98cf",
+        "type": "mqtt in",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "topic": "test",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "cc2f297d58b0360e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 370,
+        "y": 540,
+        "wires": [
+            [
+                "6bebf9fc0ab0799a"
+            ]
+        ]
+    },
+    {
+        "id": "6bebf9fc0ab0799a",
+        "type": "debug",
+        "z": "f6efe6db2169526f",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "b5bb1dc5.5d5f5",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "55 23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 790,
+        "y": 360,
+        "wires": [
+            [
+                "2a73aa04dbeacf10"
+            ]
+        ]
+    },
+    {
+        "id": "b738bcf6.c9fa3",
+        "type": "mqtt out",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "topic": "luis-device-1/sensor/out",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "da9c164b6ae5dfcb",
+        "x": 1140,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "375f70f60bc9a5d8",
+        "type": "mqtt out",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "topic": "luis-device-1/test",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "da9c164b6ae5dfcb",
+        "x": 1040,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "2a64768e7e1758e1",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "luis-device-1/test",
+        "payload": "{ \"mensaje\": \"hola desde boton node-red\" }",
+        "payloadType": "json",
+        "x": 750,
+        "y": 120,
+        "wires": [
+            [
+                "375f70f60bc9a5d8"
+            ]
+        ]
+    },
+    {
+        "id": "e7d92a9c.9ec0a8",
+        "type": "mqtt in",
+        "z": "f6efe6db2169526f",
+        "name": "Suscripción a luis-device-1/sensor/out",
+        "topic": "luis-device-1/sensor/out",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "da9c164b6ae5dfcb",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 1370,
+        "y": 180,
+        "wires": [
+            [
+                "6d07a6f1.6e1d64"
+            ]
+        ]
+    },
+    {
+        "id": "6d07a6f1.6e1d64",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "Procesa mensaje",
+        "func": "var consumo = msg.payload.consumo;\nvar fecha_hora = new Date();\n\nmsg.payload = {\n    \"consumo_diario\": consumo,\n    \"fecha_hora\": fecha_hora\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1660,
+        "y": 260,
+        "wires": [
+            [
+                "f9828194.20b858"
+            ]
+        ]
+    },
+    {
+        "id": "c09de8de.144a7",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "Obtener hora",
+        "func": "var date = new Date();\nvar hour = date.getHours();\nvar minute = date.getMinutes();\nvar response = 'La hora actual es: ' + hour + ':' + minute;\nmsg.payload = {\n    type: \"message\",\n    content: response,\n    chatId: \"1241077877\"\n};\nmsg.payload\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 780,
+        "wires": [
+            [
+                "9a685f92.bab1c"
+            ]
+        ]
+    },
+    {
+        "id": "b5b55265c5433acc",
+        "type": "debug",
+        "z": "f6efe6db2169526f",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "b2b0a0ee2d1f2122",
+        "type": "debug",
+        "z": "f6efe6db2169526f",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "a239f3b4ad7ea8cd",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "luis-device-1/test",
+        "payload": "{ \"mensaje\": \"hola desde boton node-red\" }",
+        "payloadType": "json",
+        "x": 470,
+        "y": 900,
+        "wires": [
+            [
+                "c09de8de.144a7"
+            ]
+        ]
+    },
+    {
+        "id": "functionNode",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "Function",
+        "func": "msg.payload = {\n    type: \"message\",\n    content: \"Hola\",\n    chatId: \"1241077877\"\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 1180,
+        "wires": [
+            [
+                "telegramSender",
+                "94a5dc66eb221a65"
+            ]
+        ]
+    },
+    {
+        "id": "166afb418ccf134f",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "luis-device-1/test",
+        "payload": "{ \"mensaje\": \"hola desde boton node-red\" }",
+        "payloadType": "json",
+        "x": 430,
+        "y": 1240,
+        "wires": [
+            [
+                "functionNode"
+            ]
+        ]
+    },
+    {
+        "id": "94a5dc66eb221a65",
+        "type": "debug",
+        "z": "f6efe6db2169526f",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "6493939252d86131",
+        "type": "debug",
+        "z": "f6efe6db2169526f",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "telegramReceiver",
+        "type": "telegram receiver",
+        "z": "f6efe6db2169526f",
+        "name": "Telegram Receiver",
+        "bot": "969b8e5c565eb9e9",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "x": 410,
+        "y": 1180,
+        "wires": [
+            [
+                "functionNode"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d306de987c711a5c",
+        "type": "telegram command",
+        "z": "f6efe6db2169526f",
+        "name": "/hora",
+        "command": "/hora",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "969b8e5c565eb9e9",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 490,
+        "y": 760,
+        "wires": [
+            [
+                "c09de8de.144a7"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9a685f92.bab1c",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Enviar respuesta",
+        "bot": "969b8e5c565eb9e9",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 920,
+        "y": 780,
+        "wires": [
+            [
+                "b2b0a0ee2d1f2122"
+            ],
+            []
+        ],
+        "inputLabels": [
+            "msg.payload"
+        ],
+        "outputLabels": [
+            "msg.payload",
+            ""
+        ]
+    },
+    {
+        "id": "telegramSender",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Telegram Sender",
+        "bot": "969b8e5c565eb9e9",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 990,
+        "y": 1200,
+        "wires": [
+            [
+                "6493939252d86131"
+            ]
+        ]
+    },
+    {
+        "id": "24d0eae47e076a7c",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"device\": 1}",
+        "payloadType": "json",
+        "x": 350,
+        "y": 1620,
+        "wires": [
+            [
+                "3f1d6c8674639c47"
+            ]
+        ]
+    },
+    {
+        "id": "f0bb3b2358012b85",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "Function",
+        "func": "var result = msg.payload;\n\n// Verifica si hay algún documento devuelto\nif (result && result.length > 0) {\n    // Imprime la cantidad de documentos\n    console.log('Número de documentos encontrados:', result.length);\n\n    // Puedes acceder a los documentos específicos utilizando result[index]\n    \n    // Envía la respuesta al siguiente nodo\n    return result;\n} else {\n    console.log('No se encontraron documentos.');\n    // Puedes manejar el caso en el que no se encontraron documentos\n    return null;\n}\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 1660,
+        "wires": [
+            [
+                "b2d948c0c476846d"
+            ]
+        ]
+    },
+    {
+        "id": "f3df07145cec0174",
+        "type": "debug",
+        "z": "f6efe6db2169526f",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "fa1263a00093aec6",
+        "type": "debug",
+        "z": "f6efe6db2169526f",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "3f1d6c8674639c47",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "devices",
+        "operation": "find",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 690,
+        "y": 1680,
+        "wires": [
+            [
+                "fa1263a00093aec6",
+                "f0bb3b2358012b85"
+            ]
+        ]
+    },
+    {
+        "id": "56154016c9b1f2b8",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "devices",
+        "operation": "insertOne",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 680,
+        "y": 1780,
+        "wires": [
+            [
+                "f3df07145cec0174"
+            ]
+        ]
+    },
+    {
+        "id": "e379e711446cd3bc",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"device\": 1, \"name\": \"ingreso de agua\"}",
+        "payloadType": "json",
+        "x": 370,
+        "y": 1760,
+        "wires": [
+            [
+                "56154016c9b1f2b8"
+            ]
+        ]
+    },
+    {
+        "id": "2273c3c19d58308c",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "Function",
+        "func": "msg.payload = {\n    type: \"message\",\n    content: \"Hola\",\n    chatId: \"1241077877\"\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 583,
+        "y": 1509,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b2d948c0c476846d",
+        "type": "debug",
+        "z": "f6efe6db2169526f",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "da9c164b6ae5dfcb",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "3",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "cc2f297d58b0360e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "91fac7fa88af4444bd283e70ab6f558a.s1.eu.hivemq.cloud",
+        "port": "8883",
+        "tls": "",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "969b8e5c565eb9e9",
+        "type": "telegram bot",
+        "botname": "monitor_de_agua_bot",
+        "usernames": "@Ragnaros24",
+        "chatids": "1241077877",
+        "baseapiurl": "https://api.telegram.org",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "d7b1c6b64e1a195c",
+        "type": "mongodb4-client",
+        "name": "",
+        "protocol": "mongodb",
+        "hostname": "127.0.0.1",
+        "port": "27017",
+        "dbName": "tesis",
+        "appName": "",
+        "authSource": "",
+        "authMechanism": "DEFAULT",
+        "tls": false,
+        "tlsCAFile": "",
+        "tlsCertificateKeyFile": "",
+        "tlsInsecure": false,
+        "connectTimeoutMS": "30000",
+        "socketTimeoutMS": "0",
+        "minPoolSize": "0",
+        "maxPoolSize": "100",
+        "maxIdleTimeMS": "0",
+        "uri": "",
+        "advanced": "{}",
+        "uriTabActive": "tab-uri-simple"
+    }
+]
