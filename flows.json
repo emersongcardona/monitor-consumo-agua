@@ -8,27 +8,6 @@
         "env": []
     },
     {
-        "id": "e26ca7d78b59616e",
-        "type": "mqtt in",
-        "z": "f6efe6db2169526f",
-        "name": "",
-        "topic": "luis-device-1/test",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "da9c164b6ae5dfcb",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 440,
-        "y": 300,
-        "wires": [
-            [
-                "233395e91dd61243"
-            ]
-        ]
-    },
-    {
         "id": "2a73aa04dbeacf10",
         "type": "function",
         "z": "f6efe6db2169526f",
@@ -64,43 +43,6 @@
         "wires": []
     },
     {
-        "id": "78b2e05220ee98cf",
-        "type": "mqtt in",
-        "z": "f6efe6db2169526f",
-        "name": "",
-        "topic": "test",
-        "qos": "0",
-        "datatype": "auto-detect",
-        "broker": "cc2f297d58b0360e",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 370,
-        "y": 540,
-        "wires": [
-            [
-                "6bebf9fc0ab0799a"
-            ]
-        ]
-    },
-    {
-        "id": "6bebf9fc0ab0799a",
-        "type": "debug",
-        "z": "f6efe6db2169526f",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 600,
-        "y": 640,
-        "wires": []
-    },
-    {
         "id": "b5bb1dc5.5d5f5",
         "type": "inject",
         "z": "f6efe6db2169526f",
@@ -116,8 +58,8 @@
         ],
         "repeat": "",
         "crontab": "55 23 * * *",
-        "once": false,
-        "onceDelay": 0.1,
+        "once": true,
+        "onceDelay": "",
         "topic": "",
         "payload": "",
         "payloadType": "date",
@@ -142,7 +84,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "da9c164b6ae5dfcb",
+        "broker": "57b08ab1.17c66",
         "x": 1140,
         "y": 400,
         "wires": []
@@ -238,54 +180,20 @@
         "type": "function",
         "z": "f6efe6db2169526f",
         "name": "Obtener hora",
-        "func": "var date = new Date();\nvar hour = date.getHours();\nvar minute = date.getMinutes();\nvar response = 'La hora actual es: ' + hour + ':' + minute;\nmsg.payload = {\n    type: \"message\",\n    content: response,\n    chatId: \"1241077877\"\n};\nmsg.payload\n\nreturn msg;",
+        "func": "var date = new Date();\nvar hour = date.getHours();\nvar minute = date.getMinutes();\nvar response = 'La hora actual es: ' + hour + ':' + minute;\nmsg.payload = {\n    type: \"message\",\n    content: response,\n    chatId: \"1241077877\"\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 720,
-        "y": 780,
+        "x": 700,
+        "y": 740,
         "wires": [
             [
                 "9a685f92.bab1c"
             ]
         ]
-    },
-    {
-        "id": "b5b55265c5433acc",
-        "type": "debug",
-        "z": "f6efe6db2169526f",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 880,
-        "wires": []
-    },
-    {
-        "id": "b2b0a0ee2d1f2122",
-        "type": "debug",
-        "z": "f6efe6db2169526f",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1120,
-        "y": 880,
-        "wires": []
     },
     {
         "id": "a239f3b4ad7ea8cd",
@@ -308,8 +216,8 @@
         "topic": "luis-device-1/test",
         "payload": "{ \"mensaje\": \"hola desde boton node-red\" }",
         "payloadType": "json",
-        "x": 470,
-        "y": 900,
+        "x": 450,
+        "y": 800,
         "wires": [
             [
                 "c09de8de.144a7"
@@ -317,27 +225,257 @@
         ]
     },
     {
-        "id": "functionNode",
+        "id": "d306de987c711a5c",
+        "type": "telegram command",
+        "z": "f6efe6db2169526f",
+        "name": "/hora",
+        "command": "/hora",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "c5f99447c988193c",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 450,
+        "y": 740,
+        "wires": [
+            [
+                "c09de8de.144a7"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9a685f92.bab1c",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Enviar respuesta",
+        "bot": "c5f99447c988193c",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 910,
+        "y": 740,
+        "wires": [
+            [],
+            []
+        ],
+        "inputLabels": [
+            "msg.payload"
+        ],
+        "outputLabels": [
+            "msg.payload",
+            ""
+        ]
+    },
+    {
+        "id": "2273c3c19d58308c",
         "type": "function",
         "z": "f6efe6db2169526f",
         "name": "Function",
-        "func": "msg.payload = {\n    type: \"message\",\n    content: \"Hola\",\n    chatId: \"1241077877\"\n};\nreturn msg;",
+        "func": "msg.payload = {\n    \"tank\": 1\n};\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 650,
-        "y": 1180,
+        "x": 580,
+        "y": 900,
         "wires": [
             [
-                "telegramSender",
-                "94a5dc66eb221a65"
+                "c3d75234270b2071"
             ]
         ]
     },
     {
-        "id": "166afb418ccf134f",
+        "id": "d3de370f5334b98d",
+        "type": "telegram command",
+        "z": "f6efe6db2169526f",
+        "name": "/deposito",
+        "command": "/deposito",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "c5f99447c988193c",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 420,
+        "y": 900,
+        "wires": [
+            [
+                "2273c3c19d58308c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "35994f51c5b54e9d",
+        "type": "telegram receiver",
+        "z": "f6efe6db2169526f",
+        "name": "no recognise message",
+        "bot": "c5f99447c988193c",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "x": 380,
+        "y": 2280,
+        "wires": [
+            [
+                "b424f88e5cbf5801"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "c3d75234270b2071",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "water_tank",
+        "operation": "find",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 770,
+        "y": 900,
+        "wires": [
+            [
+                "87b337b59a5e3de9"
+            ]
+        ]
+    },
+    {
+        "id": "87b337b59a5e3de9",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "Function",
+        "func": "var result = msg.payload;\n\n// Verifica si hay algún documento devuelto\nif (result && result.length > 0) {\n    // Imprime la cantidad de documentos\n\n    // Fecha en formato ISO 8601\n    const fechaISO = result[0].last_filled;\n\n    // Crear un objeto Date a partir de la cadena ISO\n    const fecha = new Date(fechaISO);\n\n    // Obtener año, mes y día\n    const año = fecha.getFullYear();\n    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // El mes se indexa desde 0\n    const dia = fecha.getDate().toString().padStart(2, '0');\n\n    // Obtener hora y minutos\n    const hora = fecha.getHours().toString().padStart(2, '0');\n    const minutos = fecha.getMinutes().toString().padStart(2, '0');\n\n    // Crear la cadena de fecha formateada\n    const fechaFormateada = `${año}-${mes}-${dia} ${hora}:${minutos}`;\n\n\n    var message = 'catidad '\n    // Puedes acceder a los documentos específicos utilizando result[index]\n    var response = \"porcentage de agua: \" + result[0].percentage ;\n    response += \"\\nLitros aproximados: \" + result[0].liters;\n    response += \"\\nUltimo llenado: \" + fechaFormateada;\n    msg.payload = { \n        type: \"message\",\n        content: response,\n        chatId: \"1241077877\"\n    };\n\n    return msg;    \n    // Envía la respuesta al siguiente nodo\n    return result;\n} else {\n    console.log('No se encontraron documentos.');\n    // Puedes manejar el caso en el que no se encontraron documentos\n    return null;\n}\n\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 900,
+        "wires": [
+            [
+                "9e7ffb744fb33de3"
+            ]
+        ]
+    },
+    {
+        "id": "9e7ffb744fb33de3",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Telegram Sender",
+        "bot": "c5f99447c988193c",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1150,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "035e8811371aa72b",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"tank\": 1}",
+        "payloadType": "json",
+        "x": 420,
+        "y": 960,
+        "wires": [
+            [
+                "c3d75234270b2071"
+            ]
+        ]
+    },
+    {
+        "id": "b424f88e5cbf5801",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "comandos no reconocidos",
+        "func": "var comandosSet = new Set([\"/deposito\", \n    \"/hora\", \n    \"/cerrar_deposito\", \n    \"/abrir_deposito\" ,\n    \"/estado\",\n    \"/cerrar_linea_principal\",\n    \"/abrir_linea_principal\",\n    \"/consumo_hoy\",\n    \"/consumo_mes\",\n    \"/consumo_mes_pasado\"\n    ]);\nvar message = msg.payload.content;\nif (!comandosSet.has(message)){\n    var response = 'Comando no reconocido';\n    response += '\\nListado de comandos:'\n    response += '\\n/estado'\n    response += '\\n/deposito'\n    response += '\\n/cerrar_deposito'\n    response += '\\n/abrir_deposito'\n    response += '\\n/cerrar_linea_principal'\n    response += '\\n/abrir_linea_principal'\n    response += '\\n/consumo_hoy'\n    response += '\\n/consumo_mes'\n    response += '\\n/consumo_mes_pasado'\n\n    msg.payload = {\n        type: \"message\",\n        content: response,\n        chatId: \"1241077877\"\n    };\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 2280,
+        "wires": [
+            [
+                "f7f28215ca56a4fd"
+            ]
+        ]
+    },
+    {
+        "id": "f7f28215ca56a4fd",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Enviar respuesta",
+        "bot": "c5f99447c988193c",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 870,
+        "y": 2280,
+        "wires": [
+            [],
+            []
+        ],
+        "inputLabels": [
+            "msg.payload"
+        ],
+        "outputLabels": [
+            "msg.payload",
+            ""
+        ]
+    },
+    {
+        "id": "de5e04dae4d59615",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "responder cerrar valvula",
+        "func": "var response = 'valvula de deposito cerrada'\nmsg.payload = {\n    type: \"message\",\n    content: response,\n    chatId: \"1241077877\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 1340,
+        "wires": [
+            [
+                "403e117b908c4e7f"
+            ]
+        ]
+    },
+    {
+        "id": "d844d0efeb578fea",
         "type": "inject",
         "z": "f6efe6db2169526f",
         "name": "",
@@ -357,104 +495,55 @@
         "topic": "luis-device-1/test",
         "payload": "{ \"mensaje\": \"hola desde boton node-red\" }",
         "payloadType": "json",
-        "x": 430,
-        "y": 1240,
+        "x": 370,
+        "y": 1400,
         "wires": [
             [
-                "functionNode"
+                "de5e04dae4d59615",
+                "07d60776f3f07ff0",
+                "662b078d2d647538"
             ]
         ]
     },
     {
-        "id": "94a5dc66eb221a65",
-        "type": "debug",
-        "z": "f6efe6db2169526f",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 820,
-        "y": 1260,
-        "wires": []
-    },
-    {
-        "id": "6493939252d86131",
-        "type": "debug",
-        "z": "f6efe6db2169526f",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1180,
-        "y": 1240,
-        "wires": []
-    },
-    {
-        "id": "telegramReceiver",
-        "type": "telegram receiver",
-        "z": "f6efe6db2169526f",
-        "name": "Telegram Receiver",
-        "bot": "969b8e5c565eb9e9",
-        "saveDataDir": "",
-        "filterCommands": false,
-        "x": 410,
-        "y": 1180,
-        "wires": [
-            [
-                "functionNode"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "d306de987c711a5c",
+        "id": "8574a77ca0312ac9",
         "type": "telegram command",
         "z": "f6efe6db2169526f",
-        "name": "/hora",
-        "command": "/hora",
+        "name": "",
+        "command": "/cerrar_deposito",
         "description": "",
         "registercommand": false,
         "language": "",
         "scope": "default",
-        "bot": "969b8e5c565eb9e9",
+        "bot": "c5f99447c988193c",
         "strict": false,
         "hasresponse": true,
         "useregex": false,
         "removeregexcommand": false,
         "outputs": 2,
-        "x": 490,
-        "y": 760,
+        "x": 360,
+        "y": 1340,
         "wires": [
             [
-                "c09de8de.144a7"
+                "de5e04dae4d59615",
+                "07d60776f3f07ff0",
+                "662b078d2d647538"
             ],
             []
         ]
     },
     {
-        "id": "9a685f92.bab1c",
+        "id": "403e117b908c4e7f",
         "type": "telegram sender",
         "z": "f6efe6db2169526f",
         "name": "Enviar respuesta",
-        "bot": "969b8e5c565eb9e9",
+        "bot": "c5f99447c988193c",
         "haserroroutput": true,
         "outputs": 2,
-        "x": 920,
-        "y": 780,
+        "x": 850,
+        "y": 1340,
         "wires": [
-            [
-                "b2b0a0ee2d1f2122"
-            ],
+            [],
             []
         ],
         "inputLabels": [
@@ -466,102 +555,427 @@
         ]
     },
     {
-        "id": "telegramSender",
-        "type": "telegram sender",
+        "id": "833f7cbd247ddcd0",
+        "type": "mqtt out",
         "z": "f6efe6db2169526f",
-        "name": "Telegram Sender",
-        "bot": "969b8e5c565eb9e9",
-        "haserroroutput": false,
-        "outputs": 1,
-        "x": 990,
-        "y": 1200,
-        "wires": [
-            [
-                "6493939252d86131"
-            ]
-        ]
+        "name": "",
+        "topic": "prueba",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "da9c164b6ae5dfcb",
+        "x": 260,
+        "y": 360,
+        "wires": []
     },
     {
-        "id": "24d0eae47e076a7c",
+        "id": "8009fafa0789454d",
         "type": "inject",
         "z": "f6efe6db2169526f",
         "name": "",
         "props": [
             {
                 "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
             }
         ],
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"device\": 1}",
+        "topic": "/test",
+        "payload": "{ \"mensaje\": \"hola desde boton node-red\" }",
         "payloadType": "json",
-        "x": 350,
-        "y": 1620,
+        "x": 110,
+        "y": 360,
         "wires": [
             [
-                "3f1d6c8674639c47"
+                "833f7cbd247ddcd0"
             ]
         ]
     },
     {
-        "id": "f0bb3b2358012b85",
+        "id": "e26ca7d78b59616e",
+        "type": "mqtt in",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "topic": "luis-device-1/test",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "da9c164b6ae5dfcb",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 440,
+        "y": 300,
+        "wires": [
+            [
+                "233395e91dd61243"
+            ]
+        ]
+    },
+    {
+        "id": "c43f60679a7bf92b",
+        "type": "mqtt out",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "topic": "water_tank /valve",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "da9c164b6ae5dfcb",
+        "x": 850,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "07d60776f3f07ff0",
         "type": "function",
         "z": "f6efe6db2169526f",
-        "name": "Function",
-        "func": "var result = msg.payload;\n\n// Verifica si hay algún documento devuelto\nif (result && result.length > 0) {\n    // Imprime la cantidad de documentos\n    console.log('Número de documentos encontrados:', result.length);\n\n    // Puedes acceder a los documentos específicos utilizando result[index]\n    \n    // Envía la respuesta al siguiente nodo\n    return result;\n} else {\n    console.log('No se encontraron documentos.');\n    // Puedes manejar el caso en el que no se encontraron documentos\n    return null;\n}\n",
+        "name": "mqtt cerrar valvula",
+        "func": "\nmsg.payload = { valve:false }\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 920,
-        "y": 1660,
+        "x": 630,
+        "y": 1280,
         "wires": [
             [
-                "b2d948c0c476846d"
+                "c43f60679a7bf92b"
             ]
         ]
     },
     {
-        "id": "f3df07145cec0174",
-        "type": "debug",
+        "id": "688cc2c74164a3a4",
+        "type": "mongodb4",
         "z": "f6efe6db2169526f",
-        "name": "debug 9",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 920,
-        "y": 1740,
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "devices",
+        "operation": "updateOne",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 810,
+        "y": 1420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "662b078d2d647538",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "update cerrar valvula",
+        "func": "\nconst options = {\n    $set: {\n        \"valve\": false\n    }\n};\n\nconst query = {\n    \"device\": 2\n};\n\nmsg.payload = [query, options];\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1420,
+        "wires": [
+            [
+                "688cc2c74164a3a4"
+            ]
+        ]
+    },
+    {
+        "id": "c105d6059e0993c9",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "responder abrir valvula",
+        "func": "var response = 'valvula de deposito abierta'\nmsg.payload = {\n    type: \"message\",\n    content: response,\n    chatId: \"1241077877\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1510,
+        "y": 1340,
+        "wires": [
+            [
+                "91ee71ef6510fb3c"
+            ]
+        ]
+    },
+    {
+        "id": "fb6bc5ec8c153021",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "luis-device-1/test",
+        "payload": "{ \"mensaje\": \"hola desde boton node-red\" }",
+        "payloadType": "json",
+        "x": 1270,
+        "y": 1400,
+        "wires": [
+            [
+                "c105d6059e0993c9",
+                "5deef03fb4a5d2a0",
+                "e7f9e175110c6235"
+            ]
+        ]
+    },
+    {
+        "id": "baae1c8e9182dcc3",
+        "type": "telegram command",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "command": "/abrir_deposito",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "c5f99447c988193c",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 1260,
+        "y": 1340,
+        "wires": [
+            [
+                "c105d6059e0993c9",
+                "5deef03fb4a5d2a0",
+                "e7f9e175110c6235"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "91ee71ef6510fb3c",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Enviar respuesta",
+        "bot": "c5f99447c988193c",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 1750,
+        "y": 1340,
+        "wires": [
+            [],
+            []
+        ],
+        "inputLabels": [
+            "msg.payload"
+        ],
+        "outputLabels": [
+            "msg.payload",
+            ""
+        ]
+    },
+    {
+        "id": "68586dd32bc11ced",
+        "type": "mqtt out",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "topic": "water_tank /valve",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "da9c164b6ae5dfcb",
+        "x": 1730,
+        "y": 1280,
         "wires": []
     },
     {
-        "id": "fa1263a00093aec6",
-        "type": "debug",
+        "id": "5deef03fb4a5d2a0",
+        "type": "function",
         "z": "f6efe6db2169526f",
-        "name": "debug 10",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1060,
-        "y": 1580,
-        "wires": []
+        "name": "mqtt abrir valvula",
+        "func": "\nmsg.payload = { valve:true}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1530,
+        "y": 1280,
+        "wires": [
+            [
+                "68586dd32bc11ced"
+            ]
+        ]
     },
     {
-        "id": "3f1d6c8674639c47",
+        "id": "66fad03cbc056075",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "devices",
+        "operation": "updateOne",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 1710,
+        "y": 1420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e7f9e175110c6235",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "update abrir valvula",
+        "func": "\nconst options = {\n    $set: {\n        \"valve\": true\n    }\n};\n\nconst query = {\n    \"device\": 2\n};\n\nmsg.payload = [query, options];\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1490,
+        "y": 1420,
+        "wires": [
+            [
+                "66fad03cbc056075"
+            ]
+        ]
+    },
+    {
+        "id": "e009f40a0d303df6",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "call values",
+        "func": "msg.payload = {};\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 1080,
+        "wires": [
+            [
+                "5bfb15da8de6bf1a",
+                "f591e541858e87e0"
+            ]
+        ]
+    },
+    {
+        "id": "ad191ef40963c410",
+        "type": "telegram command",
+        "z": "f6efe6db2169526f",
+        "name": "/estado",
+        "command": "/estado",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "c5f99447c988193c",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 410,
+        "y": 1080,
+        "wires": [
+            [
+                "e009f40a0d303df6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5bfb15da8de6bf1a",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "water_tank",
+        "operation": "find",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 750,
+        "y": 1060,
+        "wires": [
+            [
+                "575fc1a0552c0020"
+            ]
+        ]
+    },
+    {
+        "id": "a6b6070883aada79",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "order message",
+        "func": "\nvar primerObjeto = msg.payload[0];\nvar segundoObjeto = msg.payload[1];\n\nvar response = \"Estado del sistema de agua: \"\nif(primerObjeto.type == \"valvules\"){\n    console.log(\"caso 1\")\n        // Fecha en formato ISO 8601\n    const fechaISO = segundoObjeto.last_filled;\n\n    // Crear un objeto Date a partir de la cadena ISO\n    const fecha = new Date(fechaISO);\n\n    // Obtener año, mes y día\n    const año = fecha.getFullYear();\n    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // El mes se indexa desde 0\n    const dia = fecha.getDate().toString().padStart(2, '0');\n\n    // Obtener hora y minutos\n    const hora = fecha.getHours().toString().padStart(2, '0');\n    const minutos = fecha.getMinutes().toString().padStart(2, '0');\n\n    // Crear la cadena de fecha formateada\n    const fechaFormateada = `${año}-${mes}-${dia} ${hora}:${minutos}`;\n\n    response += \"\\nporcentage de agua en tanque: \" + segundoObjeto.percentage ;\n    response += \"\\nLitros aproximados: \" + segundoObjeto.liters;\n    response += \"\\nUltimo llenado: \" + fechaFormateada;\n\n    response += \"\\nvalvula de entrada: \" + (primerObjeto.valve_in ? \"Abierta\" : \"Cerrada\");\n    response += \"\\nvalvula de deposito: \" + (primerObjeto.valve_tank ? \"Abierta\" : \"Cerrada\");\n\n}else{\n    console.log(\"caso 2\")\n        // Fecha en formato ISO 8601\n    const fechaISO = primerObjeto.last_filled;\n\n    // Crear un objeto Date a partir de la cadena ISO\n    const fecha = new Date(fechaISO);\n\n    // Obtener año, mes y día\n    const año = fecha.getFullYear();\n    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // El mes se indexa desde 0\n    const dia = fecha.getDate().toString().padStart(2, '0');\n\n    // Obtener hora y minutos\n    const hora = fecha.getHours().toString().padStart(2, '0');\n    const minutos = fecha.getMinutes().toString().padStart(2, '0');\n\n    // Crear la cadena de fecha formateada\n    const fechaFormateada = `${año}-${mes}-${dia} ${hora}:${minutos}`;\n\n    response += \"\\nporcentage de agua en tanque: \" + primerObjeto.percentage ;\n    response += \"\\nLitros aproximados: \" + primerObjeto.liters;\n    response += \"\\nUltimo llenado: \" + fechaFormateada;\n\n    response += \"\\nvalvula de entrada: \" + (segundoObjeto.valve_in ? \"Abierta\" : \"Cerrada\");\n    response += \"\\nvalvula de deposito: \" + (segundoObjeto.valve_tank ? \"Abierta\" : \"Cerrada\");\n\n}\n    msg.payload = { \n        type: \"message\",\n        content: response,\n        chatId: \"1241077877\"\n    };\n\n    return msg; ",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1320,
+        "y": 1080,
+        "wires": [
+            [
+                "cd2d226cce541ff7"
+            ]
+        ]
+    },
+    {
+        "id": "cd2d226cce541ff7",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Telegram Sender",
+        "bot": "c5f99447c988193c",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1530,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f591e541858e87e0",
         "type": "mongodb4",
         "z": "f6efe6db2169526f",
         "clientNode": "d7b1c6b64e1a195c",
@@ -572,37 +986,16 @@
         "maxTimeMS": "0",
         "handleDocId": false,
         "name": "",
-        "x": 690,
-        "y": 1680,
+        "x": 750,
+        "y": 1120,
         "wires": [
             [
-                "fa1263a00093aec6",
-                "f0bb3b2358012b85"
+                "b0ae1ac8b9418877"
             ]
         ]
     },
     {
-        "id": "56154016c9b1f2b8",
-        "type": "mongodb4",
-        "z": "f6efe6db2169526f",
-        "clientNode": "d7b1c6b64e1a195c",
-        "mode": "collection",
-        "collection": "devices",
-        "operation": "insertOne",
-        "output": "toArray",
-        "maxTimeMS": "0",
-        "handleDocId": false,
-        "name": "",
-        "x": 680,
-        "y": 1780,
-        "wires": [
-            [
-                "f3df07145cec0174"
-            ]
-        ]
-    },
-    {
-        "id": "e379e711446cd3bc",
+        "id": "9c9e2d333bfdc335",
         "type": "inject",
         "z": "f6efe6db2169526f",
         "name": "",
@@ -616,88 +1009,1248 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"device\": 1, \"name\": \"ingreso de agua\"}",
+        "payload": "{}",
         "payloadType": "json",
-        "x": 370,
-        "y": 1760,
+        "x": 530,
+        "y": 1160,
         "wires": [
             [
-                "56154016c9b1f2b8"
+                "5bfb15da8de6bf1a",
+                "f591e541858e87e0"
             ]
         ]
     },
     {
-        "id": "2273c3c19d58308c",
+        "id": "9761d7cdd69cae74",
+        "type": "join",
+        "z": "f6efe6db2169526f",
+        "name": "join token",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "tipo",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1110,
+        "y": 1080,
+        "wires": [
+            [
+                "a6b6070883aada79"
+            ]
+        ]
+    },
+    {
+        "id": "575fc1a0552c0020",
         "type": "function",
         "z": "f6efe6db2169526f",
-        "name": "Function",
-        "func": "msg.payload = {\n    type: \"message\",\n    content: \"Hola\",\n    chatId: \"1241077877\"\n};\nreturn msg;",
+        "name": "order message",
+        "func": "var tanques = {\n    \"type\": \"tanques\",\n    \"percentage\": msg.payload[0].percentage,\n    \"last_filled\": msg.payload[0].last_filled,\n    \"liters\": msg.payload[0].liters\n}\n\nmsg.payload = tanques; \nreturn msg",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 583,
-        "y": 1509,
+        "x": 920,
+        "y": 1060,
+        "wires": [
+            [
+                "9761d7cdd69cae74"
+            ]
+        ]
+    },
+    {
+        "id": "b0ae1ac8b9418877",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "order message",
+        "func": "var valvules =  {\n    \"type\": \"valvules\",\n    \"valve_in\": msg.payload[0].valve,\n    \"valve_tank\": msg.payload[1].valve\n    }\n\nmsg.payload = valvules;\n\nreturn msg",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 1120,
+        "wires": [
+            [
+                "9761d7cdd69cae74"
+            ]
+        ]
+    },
+    {
+        "id": "339eedc15bbee642",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "responder abrir valvula",
+        "func": "var response = 'valvula de linea principal abierta'\nmsg.payload = {\n    type: \"message\",\n    content: response,\n    chatId: \"1241077877\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1510,
+        "y": 1580,
+        "wires": [
+            [
+                "9ceb937c0c4e713d"
+            ]
+        ]
+    },
+    {
+        "id": "cf2f214771323a92",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "luis-device-1/test",
+        "payload": "{ \"mensaje\": \"hola desde boton node-red\" }",
+        "payloadType": "json",
+        "x": 1270,
+        "y": 1640,
+        "wires": [
+            [
+                "339eedc15bbee642",
+                "291e5abe063f79dd",
+                "3b351977758d30a6"
+            ]
+        ]
+    },
+    {
+        "id": "e694ed73cc77d5f4",
+        "type": "telegram command",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "command": "/abrir_linea_principal",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "c5f99447c988193c",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 1270,
+        "y": 1580,
+        "wires": [
+            [
+                "339eedc15bbee642",
+                "291e5abe063f79dd",
+                "3b351977758d30a6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9ceb937c0c4e713d",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Enviar respuesta",
+        "bot": "c5f99447c988193c",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 1750,
+        "y": 1580,
+        "wires": [
+            [],
+            []
+        ],
+        "inputLabels": [
+            "msg.payload"
+        ],
+        "outputLabels": [
+            "msg.payload",
+            ""
+        ]
+    },
+    {
+        "id": "10c28081ca93179c",
+        "type": "mqtt out",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "topic": "main_line/valve",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "da9c164b6ae5dfcb",
+        "x": 1720,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "291e5abe063f79dd",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "mqtt abrir valvula",
+        "func": "\nmsg.payload = { valve:true}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1530,
+        "y": 1520,
+        "wires": [
+            [
+                "10c28081ca93179c"
+            ]
+        ]
+    },
+    {
+        "id": "a125054b7f4d2549",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "devices",
+        "operation": "updateOne",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 1710,
+        "y": 1660,
         "wires": [
             []
         ]
     },
     {
-        "id": "b2d948c0c476846d",
+        "id": "3b351977758d30a6",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "update abrir valvula",
+        "func": "\nconst options = {\n    $set: {\n        \"valve\": true\n    }\n};\n\nconst query = {\n    \"device\": 1\n};\n\nmsg.payload = [query, options];\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1490,
+        "y": 1660,
+        "wires": [
+            [
+                "a125054b7f4d2549"
+            ]
+        ]
+    },
+    {
+        "id": "9b7de7ec68fb3e5c",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "responder cerrar valvula",
+        "func": "var response = 'valvula de linea principal cerrada'\nmsg.payload = {\n    type: \"message\",\n    content: response,\n    chatId: \"1241077877\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 1580,
+        "wires": [
+            [
+                "43e8a8b019c2553c"
+            ]
+        ]
+    },
+    {
+        "id": "06c72341e0358410",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "luis-device-1/test",
+        "payload": "{ \"mensaje\": \"hola desde boton node-red\" }",
+        "payloadType": "json",
+        "x": 360,
+        "y": 1640,
+        "wires": [
+            [
+                "9b7de7ec68fb3e5c",
+                "bc30e5a3236330b4",
+                "3cfb17cdd7bff3b0"
+            ]
+        ]
+    },
+    {
+        "id": "c6d22cfbb878ad54",
+        "type": "telegram command",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "command": "/cerrar_linea_principal",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "c5f99447c988193c",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 320,
+        "y": 1580,
+        "wires": [
+            [
+                "9b7de7ec68fb3e5c",
+                "bc30e5a3236330b4",
+                "3cfb17cdd7bff3b0"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "43e8a8b019c2553c",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Enviar respuesta",
+        "bot": "c5f99447c988193c",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 840,
+        "y": 1580,
+        "wires": [
+            [],
+            []
+        ],
+        "inputLabels": [
+            "msg.payload"
+        ],
+        "outputLabels": [
+            "msg.payload",
+            ""
+        ]
+    },
+    {
+        "id": "b84b8fd4a78f1765",
+        "type": "mqtt out",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "topic": "main_line /valve",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "da9c164b6ae5dfcb",
+        "x": 840,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "bc30e5a3236330b4",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "mqtt cerrar valvula",
+        "func": "\nmsg.payload = { valve:false }\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 1520,
+        "wires": [
+            [
+                "b84b8fd4a78f1765"
+            ]
+        ]
+    },
+    {
+        "id": "dff6d3a574344839",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "devices",
+        "operation": "updateOne",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 800,
+        "y": 1660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3cfb17cdd7bff3b0",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "update cerrar valvula",
+        "func": "\nconst options = {\n    $set: {\n        \"valve\": false\n    }\n};\n\nconst query = {\n    \"device\": 1\n};\n\nmsg.payload = [query, options];\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 1660,
+        "wires": [
+            [
+                "dff6d3a574344839"
+            ]
+        ]
+    },
+    {
+        "id": "6f519729678ab8b6",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "records",
+        "operation": "insertMany",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 870,
+        "y": 540,
+        "wires": [
+            [
+                "056ddd0b92eb8a4a"
+            ]
+        ]
+    },
+    {
+        "id": "28e1d46cf4a98e9f",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "Obtener hora",
+        "func": "   msg.payload = [[\n    {\n      \"device\": \"tanque\",\n      \"liters\": 42.45,\n      \"date\": \"2023-11-24T04:00:00.000Z\"\n    }\n    ,\n    {\n      \"device\": \"ingreso\",\n      \"liters\": 23.87,\n      \"date\": \"2023-11-24T04:30:00.000Z\"\n    }\n    ,\n    {\n      \"device\": \"tanque\",\n      \"liters\": 12.71,\n      \"date\": \"2023-11-24T05:00:00.000Z\"\n    }\n    ,\n    {\n      \"device\": \"ingreso\",\n      \"liters\": 11.6,\n      \"date\": \"2023-11-24T05:30:00.000Z\"\n    },\n     {\n       \"device\": \"tanque\",\n       \"liters\": 10.5,\n       \"date\": \"2023-11-24T06:00:00.000Z\"\n     }\n     ,\n     {\n       \"device\": \"ingreso\",\n       \"liters\": 0.8,\n       \"date\": \"2023-11-24T06:30:00.000Z\"\n     }\n     ,\n     {\n       \"device\": \"tanque\",\n       \"liters\": 5.65,\n       \"date\": \"2023-11-24T07:00:00.000Z\"\n     }\n     ,\n     {\n       \"device\": \"ingreso\",\n       \"liters\": 0.5,\n       \"date\": \"2023-11-24T07:30:00.000Z\"\n     },\n     {\n       \"device\": \"tanque\",\n       \"liters\": 25.48,\n       \"date\": \"2023-11-24T08:00:00.000Z\"\n     }\n     ,\n     {\n       \"device\": \"ingreso\",\n       \"liters\": 0.6,\n       \"date\": \"2023-11-24T08:30:00.000Z\"\n     }\n  ]]\n\n\n\n  return msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 600,
+        "wires": [
+            [
+                "32cceb4af47037ee",
+                "6f519729678ab8b6"
+            ]
+        ]
+    },
+    {
+        "id": "056ddd0b92eb8a4a",
         "type": "debug",
         "z": "f6efe6db2169526f",
-        "name": "debug 11",
+        "name": "debug 23",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1140,
-        "y": 1660,
+        "x": 1040,
+        "y": 540,
         "wires": []
     },
     {
-        "id": "da9c164b6ae5dfcb",
+        "id": "32cceb4af47037ee",
+        "type": "debug",
+        "z": "f6efe6db2169526f",
+        "name": "debug 24",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "c094a53e4686feb7",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 430,
+        "y": 560,
+        "wires": [
+            [
+                "28e1d46cf4a98e9f"
+            ]
+        ]
+    },
+    {
+        "id": "588547e75660c890",
+        "type": "telegram command",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "command": "/consumo_hoy",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "c5f99447c988193c",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 360,
+        "y": 1800,
+        "wires": [
+            [
+                "954d6dfaeaae66ec",
+                "22c5c95a134473bb"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "954d6dfaeaae66ec",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos hoy tanque",
+        "func": "msg.payload = {\n  \"device\": \"tanque\", \n  \"date\": {\n    \"$regex\": `${new Date().toISOString().split('T')[0]}`\n  }\n}\n\nconst todayRegex = `${new Date().toISOString().split('T')[0]}`\nconsole.log(\"expresion regular: \", todayRegex);\nreturn msg",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1800,
+        "wires": [
+            [
+                "1b116f2a2d042a94"
+            ]
+        ]
+    },
+    {
+        "id": "1b116f2a2d042a94",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "records",
+        "operation": "find",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 790,
+        "y": 1800,
+        "wires": [
+            [
+                "9c6ea0f7413b5671"
+            ]
+        ]
+    },
+    {
+        "id": "9c8e9b0a336be11f",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 370,
+        "y": 1860,
+        "wires": [
+            [
+                "954d6dfaeaae66ec",
+                "22c5c95a134473bb"
+            ]
+        ]
+    },
+    {
+        "id": "9c6ea0f7413b5671",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos hoy",
+        "func": "\nif (msg.payload.length > 0) {\n    var totalConsumo = 0;\n    msg.payload.forEach(elemento => {\n        totalConsumo += elemento.liters\n    });\n    // response = `consumido de la linea principal: ${totalConsumo}L`\n    var tank_liters = {\n        \"type\": \"tank\",\n        \"total_tank_liters\": totalConsumo\n    }\n\n} else {\n    var tank_liters = {\n        \"type\": \"tank\",\n        \"total_tank_liters\": 0\n    }\n}\n\nmsg.payload = tank_liters;\n\nreturn msg",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 1800,
+        "wires": [
+            [
+                "5f94ac5bdde8d8a1"
+            ]
+        ]
+    },
+    {
+        "id": "22c5c95a134473bb",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos hoy ingreso",
+        "func": "msg.payload = {\n  \"device\": \"ingreso\", \n  \"date\": {\n    \"$regex\": `${new Date().toISOString().split('T')[0]}`\n  }\n}\n\nconst todayRegex = `${new Date().toISOString().split('T')[0]}`\nconsole.log(\"expresion regular: \", todayRegex);\nreturn msg",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1860,
+        "wires": [
+            [
+                "3026ab42fa7ffd9e"
+            ]
+        ]
+    },
+    {
+        "id": "3026ab42fa7ffd9e",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "records",
+        "operation": "find",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 790,
+        "y": 1860,
+        "wires": [
+            [
+                "ae06fd5b20ba53fb"
+            ]
+        ]
+    },
+    {
+        "id": "51f9fead442af713",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Enviar respuesta",
+        "bot": "c5f99447c988193c",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 1570,
+        "y": 1820,
+        "wires": [
+            [],
+            []
+        ],
+        "inputLabels": [
+            "msg.payload"
+        ],
+        "outputLabels": [
+            "msg.payload",
+            ""
+        ]
+    },
+    {
+        "id": "ae06fd5b20ba53fb",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos hoy",
+        "func": "\nif (msg.payload.length > 0){\n    var totalConsumo = 0;\n    msg.payload.forEach(elemento => {\n        totalConsumo += elemento.liters\n    });\n   // response = `consumido de la linea principal: ${totalConsumo}L`\n    var main_line_liters =  {\n    \"type\": \"main_line\",\n    \"total_main_line_liters\": totalConsumo\n    }\n\n} else {\n     var main_line_liters =  {\n    \"type\": \"main_line\",\n    \"total_main_line_liters\": 0\n    }\n}\n\nmsg.payload = main_line_liters;\n\nreturn msg",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 1860,
+        "wires": [
+            [
+                "5f94ac5bdde8d8a1"
+            ]
+        ]
+    },
+    {
+        "id": "5f94ac5bdde8d8a1",
+        "type": "join",
+        "z": "f6efe6db2169526f",
+        "name": "join token",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "tipo",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1170,
+        "y": 1820,
+        "wires": [
+            [
+                "cc923d1f7f373b34"
+            ]
+        ]
+    },
+    {
+        "id": "cc923d1f7f373b34",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "order message",
+        "func": "\nvar primerObjeto = msg.payload[0];\nvar segundoObjeto = msg.payload[1];\n\nvar response = \"Consumo de hoy:\"\nif(primerObjeto.type == \"main_line\"){\n    console.log(\"caso 1\")\n    console.log(\"primer objeto:\", primerObjeto);\n    console.log(\"segundo objeto:\", segundoObjeto);\n    response += primerObjeto.total_main_line_liters > 0\n        ? `\\nLinea principal: ${primerObjeto.total_main_line_liters.toFixed(2)}L`\n        : \"\\nNo hay registros de la linea principal.\";\n\n    response += segundoObjeto.total_tank_liters > 0\n        ? `\\nDeposito: ${segundoObjeto.total_tank_liters.toFixed(2)}L`\n        : \"\\nNo hay registros para el deposito.\";\n   \n\n}else{\n    console.log(\"caso 2\")\n    console.log(\"primer objeto:\", primerObjeto);\n    console.log(\"segundo objeto:\", segundoObjeto);\n\n    response += segundoObjeto.total_main_line_liters > 0\n        ? `\\nLinea principal: ${segundoObjeto.total_main_line_liters.toFixed(2)}L`\n        : \"\\nNo hay registros de la linea principal.\";\n\n    response += primerObjeto.total_tank_liters > 0\n        ? `\\nDeposito: ${primerObjeto.total_tank_liters.toFixed(2)}L`\n        : \"\\nNo hay registros para el deposito.\";\n\n}\n    msg.payload = { \n        type: \"message\",\n        content: response,\n        chatId: \"1241077877\"\n    };\n\n    return msg; ",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 1820,
+        "wires": [
+            [
+                "51f9fead442af713"
+            ]
+        ]
+    },
+    {
+        "id": "be97bbcea0959adc",
+        "type": "telegram command",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "command": "/consumo_mes",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "c5f99447c988193c",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 360,
+        "y": 1960,
+        "wires": [
+            [
+                "89a1925ffee33236",
+                "37e94220868887e5"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "89a1925ffee33236",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos mes tanque",
+        "func": "const today = new Date();\nconst yearMonthRegex = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}`;\n\n// Ahora puedes usar yearMonthRegex en tu consulta\nmsg.payload = {\n  \"device\": \"tanque\",\n  \"date\": {\n    \"$regex\": yearMonthRegex\n  }\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1960,
+        "wires": [
+            [
+                "c4646b14edc36edc"
+            ]
+        ]
+    },
+    {
+        "id": "c4646b14edc36edc",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "records",
+        "operation": "find",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 790,
+        "y": 1960,
+        "wires": [
+            [
+                "83bdc272f4d78c89"
+            ]
+        ]
+    },
+    {
+        "id": "7de7844c28151430",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 370,
+        "y": 2020,
+        "wires": [
+            [
+                "89a1925ffee33236",
+                "37e94220868887e5"
+            ]
+        ]
+    },
+    {
+        "id": "83bdc272f4d78c89",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos hoy",
+        "func": "\nif (msg.payload.length > 0) {\n    var totalConsumo = 0;\n    msg.payload.forEach(elemento => {\n        totalConsumo += elemento.liters\n    });\n    // response = `consumido de la linea principal: ${totalConsumo}L`\n    var tank_liters = {\n        \"type\": \"tank\",\n        \"total_tank_liters\": totalConsumo\n    }\n\n} else {\n    var tank_liters = {\n        \"type\": \"tank\",\n        \"total_tank_liters\": 0\n    }\n}\n\nmsg.payload = tank_liters;\n\nreturn msg",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 1960,
+        "wires": [
+            [
+                "91591aade34ff013"
+            ]
+        ]
+    },
+    {
+        "id": "37e94220868887e5",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos mes ingreso",
+        "func": "const today = new Date();\nconst yearMonthRegex = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}`;\n\n// Ahora puedes usar yearMonthRegex en tu consulta\nmsg.payload = {\n  \"device\": \"ingreso\",\n  \"date\": {\n    \"$regex\": yearMonthRegex\n  }\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 2020,
+        "wires": [
+            [
+                "de36f1f623157960"
+            ]
+        ]
+    },
+    {
+        "id": "de36f1f623157960",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "records",
+        "operation": "find",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 790,
+        "y": 2020,
+        "wires": [
+            [
+                "f43bdba1a86cd113"
+            ]
+        ]
+    },
+    {
+        "id": "b873c4c40c87db19",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Enviar respuesta",
+        "bot": "c5f99447c988193c",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 1570,
+        "y": 1980,
+        "wires": [
+            [],
+            []
+        ],
+        "inputLabels": [
+            "msg.payload"
+        ],
+        "outputLabels": [
+            "msg.payload",
+            ""
+        ]
+    },
+    {
+        "id": "f43bdba1a86cd113",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos hoy",
+        "func": "\nif (msg.payload.length > 0){\n    var totalConsumo = 0;\n    msg.payload.forEach(elemento => {\n        totalConsumo += elemento.liters\n    });\n   // response = `consumido de la linea principal: ${totalConsumo}L`\n    var main_line_liters =  {\n    \"type\": \"main_line\",\n    \"total_main_line_liters\": totalConsumo\n    }\n\n} else {\n     var main_line_liters =  {\n    \"type\": \"main_line\",\n    \"total_main_line_liters\": 0\n    }\n}\n\nmsg.payload = main_line_liters;\n\nreturn msg",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 2020,
+        "wires": [
+            [
+                "91591aade34ff013"
+            ]
+        ]
+    },
+    {
+        "id": "91591aade34ff013",
+        "type": "join",
+        "z": "f6efe6db2169526f",
+        "name": "join token",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "tipo",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1170,
+        "y": 1980,
+        "wires": [
+            [
+                "b06d49b69ea02334"
+            ]
+        ]
+    },
+    {
+        "id": "b06d49b69ea02334",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "order message",
+        "func": "\nvar primerObjeto = msg.payload[0];\nvar segundoObjeto = msg.payload[1];\n\nvar response = \"Consumo de este mes:\"\nif(primerObjeto.type == \"main_line\"){\n    console.log(\"caso 1\")\n    console.log(\"primer objeto:\", primerObjeto);\n    console.log(\"segundo objeto:\", segundoObjeto);\n    response += primerObjeto.total_main_line_liters > 0\n        ? `\\nLinea principal: ${primerObjeto.total_main_line_liters.toFixed(2)}L`\n        : \"\\nNo hay registros de la linea principal.\";\n\n    response += segundoObjeto.total_tank_liters > 0\n        ? `\\nDeposito: ${segundoObjeto.total_tank_liters.toFixed(2)}L`\n        : \"\\nNo hay registros para el deposito.\";\n   \n\n}else{\n    console.log(\"caso 2\")\n    console.log(\"primer objeto:\", primerObjeto);\n    console.log(\"segundo objeto:\", segundoObjeto);\n\n    response += segundoObjeto.total_main_line_liters > 0\n        ? `\\nLinea principal: ${segundoObjeto.total_main_line_liters.toFixed(2)}L`\n        : \"\\nNo hay registros de la linea principal.\";\n\n    response += primerObjeto.total_tank_liters > 0\n        ? `\\nDeposito: ${primerObjeto.total_tank_liters.toFixed(2)}L`\n        : \"\\nNo hay registros para el deposito.\";\n\n}\n    msg.payload = { \n        type: \"message\",\n        content: response,\n        chatId: \"1241077877\"\n    };\n\n    return msg; ",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 1980,
+        "wires": [
+            [
+                "b873c4c40c87db19"
+            ]
+        ]
+    },
+    {
+        "id": "869f8bbe3e52a640",
+        "type": "telegram command",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "command": "/consumo_mes_pasado",
+        "description": "",
+        "registercommand": false,
+        "language": "",
+        "scope": "default",
+        "bot": "c5f99447c988193c",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 260,
+        "y": 2100,
+        "wires": [
+            [
+                "85acaefc503381b7",
+                "0392faf488b3a765"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "85acaefc503381b7",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos mes anterior tanque",
+        "func": "const today = new Date();\nlet year = today.getFullYear();\nlet month = today.getMonth() + 1;\n\n// Ajustar el mes y el año si estamos en enero\nif (month === 1) {\n  month = 12;\n  year--;\n} else {\n  month--;\n}\n\n// Construir la expresión regular para el mes anterior\nconst lastMonthRegex = `${year}-${month.toString().padStart(2, '0')}`;\n\n// Ahora puedes usar lastMonthRegex en tu consulta\nmsg.payload = {\n  \"device\": \"tanque\", \n  \"date\": {\n    \"$regex\": lastMonthRegex\n  }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 2100,
+        "wires": [
+            [
+                "29c3afecab932b0d"
+            ]
+        ]
+    },
+    {
+        "id": "29c3afecab932b0d",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "records",
+        "operation": "find",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 790,
+        "y": 2100,
+        "wires": [
+            [
+                "7e7964fcc7b00561"
+            ]
+        ]
+    },
+    {
+        "id": "dd93b875cfbd4282",
+        "type": "inject",
+        "z": "f6efe6db2169526f",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 270,
+        "y": 2160,
+        "wires": [
+            [
+                "85acaefc503381b7",
+                "0392faf488b3a765"
+            ]
+        ]
+    },
+    {
+        "id": "7e7964fcc7b00561",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos hoy",
+        "func": "\nif (msg.payload.length > 0) {\n    var totalConsumo = 0;\n    msg.payload.forEach(elemento => {\n        totalConsumo += elemento.liters\n    });\n    // response = `consumido de la linea principal: ${totalConsumo}L`\n    var tank_liters = {\n        \"type\": \"tank\",\n        \"total_tank_liters\": totalConsumo\n    }\n\n} else {\n    var tank_liters = {\n        \"type\": \"tank\",\n        \"total_tank_liters\": 0\n    }\n}\n\nmsg.payload = tank_liters;\n\nreturn msg",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 2100,
+        "wires": [
+            [
+                "6b34f2027edd3d62"
+            ]
+        ]
+    },
+    {
+        "id": "0392faf488b3a765",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos mes anterior ingreso",
+        "func": "const today = new Date();\nlet year = today.getFullYear();\nlet month = today.getMonth() + 1;\n\n// Ajustar el mes y el año si estamos en enero\nif (month === 1) {\n  month = 12;\n  year--;\n} else {\n  month--;\n}\n\n// Construir la expresión regular para el mes anterior\nconst lastMonthRegex = `${year}-${month.toString().padStart(2, '0')}`;\n\n// Ahora puedes usar lastMonthRegex en tu consulta\nmsg.payload = {\n  \"device\": \"ingreso\",\n  \"date\": {\n    \"$regex\": lastMonthRegex\n  }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 2160,
+        "wires": [
+            [
+                "5a7dfe6e5f5cd597"
+            ]
+        ]
+    },
+    {
+        "id": "5a7dfe6e5f5cd597",
+        "type": "mongodb4",
+        "z": "f6efe6db2169526f",
+        "clientNode": "d7b1c6b64e1a195c",
+        "mode": "collection",
+        "collection": "records",
+        "operation": "find",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 790,
+        "y": 2160,
+        "wires": [
+            [
+                "e4c00b644c864ae9"
+            ]
+        ]
+    },
+    {
+        "id": "047d3efa137f47d2",
+        "type": "telegram sender",
+        "z": "f6efe6db2169526f",
+        "name": "Enviar respuesta",
+        "bot": "c5f99447c988193c",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 1570,
+        "y": 2120,
+        "wires": [
+            [],
+            []
+        ],
+        "inputLabels": [
+            "msg.payload"
+        ],
+        "outputLabels": [
+            "msg.payload",
+            ""
+        ]
+    },
+    {
+        "id": "e4c00b644c864ae9",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "consumos hoy",
+        "func": "\nif (msg.payload.length > 0){\n    var totalConsumo = 0;\n    msg.payload.forEach(elemento => {\n        totalConsumo += elemento.liters\n    });\n   // response = `consumido de la linea principal: ${totalConsumo}L`\n    var main_line_liters =  {\n    \"type\": \"main_line\",\n    \"total_main_line_liters\": totalConsumo\n    }\n\n} else {\n     var main_line_liters =  {\n    \"type\": \"main_line\",\n    \"total_main_line_liters\": 0\n    }\n}\n\nmsg.payload = main_line_liters;\n\nreturn msg",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 2160,
+        "wires": [
+            [
+                "6b34f2027edd3d62"
+            ]
+        ]
+    },
+    {
+        "id": "6b34f2027edd3d62",
+        "type": "join",
+        "z": "f6efe6db2169526f",
+        "name": "join token",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "tipo",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1170,
+        "y": 2120,
+        "wires": [
+            [
+                "4d618aff41844949"
+            ]
+        ]
+    },
+    {
+        "id": "4d618aff41844949",
+        "type": "function",
+        "z": "f6efe6db2169526f",
+        "name": "order message",
+        "func": "\nvar primerObjeto = msg.payload[0];\nvar segundoObjeto = msg.payload[1];\n\nvar response = \"Consumo del mes pasado:\"\nif(primerObjeto.type == \"main_line\"){\n    console.log(\"caso 1\")\n    console.log(\"primer objeto:\", primerObjeto);\n    console.log(\"segundo objeto:\", segundoObjeto);\n    response += primerObjeto.total_main_line_liters > 0\n        ? `\\nLinea principal: ${primerObjeto.total_main_line_liters.toFixed(2)}L`\n        : \"\\nNo hay registros de la linea principal.\";\n\n    response += segundoObjeto.total_tank_liters > 0\n        ? `\\nDeposito: ${segundoObjeto.total_tank_liters.toFixed(2)}L`\n        : \"\\nNo hay registros para el deposito.\";\n   \n\n}else{\n    console.log(\"caso 2\")\n    console.log(\"primer objeto:\", primerObjeto);\n    console.log(\"segundo objeto:\", segundoObjeto);\n\n    response += segundoObjeto.total_main_line_liters > 0\n        ? `\\nLinea principal: ${segundoObjeto.total_main_line_liters.toFixed(2)}L`\n        : \"\\nNo hay registros de la linea principal.\";\n\n    response += primerObjeto.total_tank_liters > 0\n        ? `\\nDeposito: ${primerObjeto.total_tank_liters.toFixed(2)}L`\n        : \"\\nNo hay registros para el deposito.\";\n\n}\n    msg.payload = { \n        type: \"message\",\n        content: response,\n        chatId: \"1241077877\"\n    };\n\n    return msg; ",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 2120,
+        "wires": [
+            [
+                "047d3efa137f47d2"
+            ]
+        ]
+    },
+    {
+        "id": "57b08ab1.17c66",
         "type": "mqtt-broker",
         "name": "",
-        "broker": "broker.hivemq.com",
+        "broker": "tu_broker_mqtt",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,
         "usetls": false,
-        "protocolVersion": "3",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "cc2f297d58b0360e",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "91fac7fa88af4444bd283e70ab6f558a.s1.eu.hivemq.cloud",
-        "port": "8883",
-        "tls": "",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": true,
         "protocolVersion": "4",
         "keepalive": "60",
         "cleansession": true,
@@ -706,6 +2259,33 @@
         "birthPayload": "",
         "birthMsg": {},
         "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "da9c164b6ae5dfcb",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "3",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
         "closeQos": "0",
         "closePayload": "",
         "closeMsg": {},
@@ -717,12 +2297,12 @@
         "sessionExpiry": ""
     },
     {
-        "id": "969b8e5c565eb9e9",
+        "id": "c5f99447c988193c",
         "type": "telegram bot",
         "botname": "monitor_de_agua_bot",
-        "usernames": "@Ragnaros24",
+        "usernames": "",
         "chatids": "1241077877",
-        "baseapiurl": "https://api.telegram.org",
+        "baseapiurl": "",
         "updatemode": "polling",
         "pollinterval": "300",
         "usesocks": false,
