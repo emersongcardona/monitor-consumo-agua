@@ -1,0 +1,58 @@
+<mxfile host="app.diagrams.net" modified="2024-02-05T07:37:57.472Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="FIxBwHX3HhNtI6mU5ZG_" version="23.1.1" type="device">
+  <diagram name="Página-1" id="nIQtJnXs3_x7XLM3zx5z">
+    <mxGraphModel dx="1434" dy="738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="91QoBHGj3oXkd9bMlDvl-1" value="MCU&amp;nbsp;&lt;br&gt;ESP32" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="130" width="120" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="91QoBHGj3oXkd9bMlDvl-2" value="regulador de voltaje a 5V" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="130" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="91QoBHGj3oXkd9bMlDvl-3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.125;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="91QoBHGj3oXkd9bMlDvl-2" target="91QoBHGj3oXkd9bMlDvl-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="410" as="sourcePoint" />
+            <mxPoint x="440" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="91QoBHGj3oXkd9bMlDvl-4" value="sensor de flujo&amp;nbsp;&lt;br&gt;&lt;a style=&quot;box-sizing: inherit; background-color: rgb(255, 255, 255); color: rgb(68, 68, 68); text-decoration-line: none; touch-action: manipulation; transition: color 0.2s ease-in-out 0s, background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s; font-family: Roboto, Tahoma, sans-serif, Arial; font-size: 14px; text-align: start;&quot; target=&quot;_blank&quot; href=&quot;https://naylampmechatronics.com/sensores-liquido/108-sensor-de-flujo-de-agua-12-yf-s201.html&quot;&gt;YF-S201&lt;/a&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="91QoBHGj3oXkd9bMlDvl-5" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.992;entryY=0.182;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="91QoBHGj3oXkd9bMlDvl-4" target="91QoBHGj3oXkd9bMlDvl-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="410" as="sourcePoint" />
+            <mxPoint x="480" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="91QoBHGj3oXkd9bMlDvl-6" value="sensor de flote" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="91QoBHGj3oXkd9bMlDvl-7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="91QoBHGj3oXkd9bMlDvl-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="490" as="sourcePoint" />
+            <mxPoint x="470" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="91QoBHGj3oXkd9bMlDvl-8" value="electrovalvula" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="410" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="91QoBHGj3oXkd9bMlDvl-10" value="controlador de potencia&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="91QoBHGj3oXkd9bMlDvl-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="91QoBHGj3oXkd9bMlDvl-1" target="91QoBHGj3oXkd9bMlDvl-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="410" as="sourcePoint" />
+            <mxPoint x="440" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="91QoBHGj3oXkd9bMlDvl-12" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="91QoBHGj3oXkd9bMlDvl-10" target="91QoBHGj3oXkd9bMlDvl-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="410" as="sourcePoint" />
+            <mxPoint x="440" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
